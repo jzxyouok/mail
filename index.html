@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+    <title>mail msg</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    
+    <div id="mail-App">
+        <header class="head fixed">
+          <div class="inform left">
+            <span class="head-icon icon-envelope-alt"></span><div class="circle top-mark">2</div>
+          </div>
+          <h1 class="head-icon">Han-Mail</h1>
+          <div class="inform right spacing">
+            <button class="btn" type="button"><span class="head-icon icon-reorder"></span></button>
+          </div>
+        </header>
+      <div class="container">
+        <section>
+          <div class="container-item" v-for="item in AllItem" v-on:click="readEmail">
+            <div class="userface left">
+              <img v-bind:src="item.imgurl" alt="">
+            </div>
+            <div class="main-item">
+              <div class="mask {{item.color}}"></div>
+              <div class="user"><h2>{{item.username}}</h2><span class="dot circle"></span></div>
+              <div class="caption"><h3>{{item.title}}</h3></div>
+               <div class="content"><p>{{item.content}}</p></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+    </div>
+
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    
+    <!-- build:js scripts/main.js -->
+
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/vue.js"></script>
+    <script src="scripts/main.js"></script>
+
+    <!-- endbuild -->
+  </body>
+</html>

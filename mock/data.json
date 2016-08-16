@@ -1,0 +1,60 @@
+{
+  "data":[
+    {
+      "username":"Hansir",
+      "imgurl":"images/userface/2fdfe01fcb5e3ab5b8d3492e0dd223f2.jpg",
+      "status":"read",
+      "title":"我很想你",
+      "content":"",
+      "color":"green"
+    },
+    {
+      "username":"John",
+      "imgurl":"images/userface/59a0a94d3612ddb469bb43fbd0d884e2.jpg",
+      "status":"Unread",
+      "title":"Hello",
+      "content":"I Miss You!",
+      "color":"blue"
+    },
+    {
+      "username":"Micheal",
+      "imgurl":"images/userface/55e1e026dc781749.jpg!200x200.jpg",
+      "status":"Unread",
+      "title":"Hello",
+      "content":"I Miss You!",
+      "color":"yellow"
+    },
+    {
+      "username":"Amy",
+      "imgurl":"images/userface/on15puvdrrvjpg.jpg",
+      "status":"read",
+      "title":"Hello",
+      "content":"I Miss You!",
+      "color":"red"
+    },
+    {
+      "username":"David",
+      "imgurl":"images/userface/1301191658480017.jpg",
+      "status":"Unread",
+      "title":"Hello",
+      "content":"I Miss You!",
+      "color":"orange"
+    },
+    {
+      "username":"James",
+      "imgurl":"images/userface/u=2090772463,1650930228&fm=73.jpeg",
+      "status":"Unread",
+      "title":"Hello",
+      "content":"I Miss You!",
+      "color":"pink"
+    },
+    {
+      "username":"James",
+      "imgurl":"images/userface/u=2090772463,1650930228&fm=73.jpeg",
+      "status":"Unread",
+      "title":"Hello",
+      "content":"I Miss You!",
+      "color":"yellow"
+    }
+  ]
+}

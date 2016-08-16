@@ -1,0 +1,181 @@
+.container{
+  margin-top:120px;
+}
+.head{
+  width: 100%;
+  height: 120px;
+  background: #333658;
+  text-align: center;
+  line-height: 120px;
+}
+.head h1{
+  display: inline-block;
+}
+.inform{
+  width: 120px;
+  height: 120px;
+  position: relative;
+}
+.spacing{
+  margin-top: 5px;
+}
+.circle{
+  border-radius: 50%;
+}
+.top-mark{
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background: #ccc;
+  top: 25px;
+  left: 60px;
+  float: left;
+  line-height: 37px;
+  font-weight: bold;
+  font-size: 22px;
+}
+.head-icon{
+  font-size:36px;
+  color:#fff;
+}
+.icon-envelope:before {
+  content: "\f0e0";
+}
+.icon-reorder:before {
+  content: "\f0c9";
+}
+.icon-envelope-alt:before {
+  content: "\f003";
+}
+.right{
+  float:right;
+}
+.left{
+  float:left;
+}
+.fixed{
+  z-index: 100;
+  position: fixed;
+  top: 0;
+}
+.container-item{
+  height:150px;
+}
+.main-item{
+  height: 150px;
+  padding: 8px 20px 8px 40px;
+  margin-left: 150px;
+  box-sizing: border-box;
+  background-color: #f7f7f7;
+  position: relative;
+}
+.mask{
+  width: 15px;
+  height: 150px;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+}
+.main-item h2{
+  font-size: 34px;
+  padding-right: 30px;
+  color:#515151;
+}
+.user{
+  position: relative;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+.caption h3{
+  font-size:32px;
+  margin-bottom:15px;
+  color:#727272;
+}
+.content p{
+  height:29px;
+  width:450px;
+  font-size:28px;
+  color:#B2B2B2;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
+}
+.userface{
+  height: 150px;
+  width: 150px;
+}
+.userface img{
+  width:100%;
+  height:100%;
+}
+.dot{
+  background-color: greenyellow;
+  width: 15px;
+  height: 15px;
+  display: block;
+  position: absolute;
+  top: 10px;
+  right:0;
+}
+.green{
+  background:#56b699;
+}
+.blue{
+  background:#5674B6;
+}
+.red{
+  background:#D05E5E;
+}
+.orange{
+  background: #EA9739;
+}
+.pink{
+  background: #B6568D;
+}
+.yellow{
+  background:#FCF05F;
+}
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../font/fontawesome-webfont.eot?v=3.2.1');
+  src: url('../font/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'), url('../font/fontawesome-webfont.woff?v=3.2.1') format('woff'), url('../font/fontawesome-webfont.ttf?v=3.2.1') format('truetype'), url('../font/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: inherit;
+  -webkit-font-smoothing: antialiased;
+  *margin-right: .3em;
+}
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+}
+a [class^="icon-"],
+a [class*=" icon-"] {
+  display: inline;
+}
+.icon-large:before {
+  vertical-align: -10%;
+  font-size: 1.3333333333333333em;
+}
+/* increased font size for icon-large */
+[class^="icon-"].icon-fixed-width,
+[class*=" icon-"].icon-fixed-width {
+  display: inline-block;
+  width: 1.1428571428571428em;
+  text-align: right;
+  padding-right: 0.2857142857142857em;
+}
+[class^="icon-"].icon-fixed-width.icon-large,
+[class*=" icon-"].icon-fixed-width.icon-large {
+  width: 1.4285714285714286em;
+}

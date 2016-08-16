@@ -2,7 +2,7 @@ $(function(){
   $.getJSON("mock/data.json",function(response){
     RenderDom(response.data);
   })
-
+  Vue.use(VueTouch);
   function RenderDom(allItem){
     var app = new Vue({
       el:'#mail-App',
@@ -10,8 +10,11 @@ $(function(){
         AllItem:allItem
       },
       methods:{
-        readEmail:function(){
-          
+        mailOnClick:function(){
+
+        },
+        onSwipeLeft:function(){
+
         }
       }
     })

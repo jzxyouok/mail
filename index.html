@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<html lang="" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-touch="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
@@ -49,6 +50,35 @@
             </div>
           </div>
         </section>
+        <div class="mail-item" v-touch:swipeleft="onSwipeLeft">
+          <div class="mail-head">
+            <div class="mail-top green">
+            </div>
+            <div class="user-pic left">
+              <img class="circle" src="images/userface/2fdfe01fcb5e3ab5b8d3492e0dd223f2.jpg" alt="">
+            </div>
+            <div class="mail-center left">
+              <h2>Hansir</h2>
+              <h3> I Miss You</h3>
+            </div>
+            <div class="mail-right right">
+              <a href="javascript:;"><span class="icon-angle-up"></span></a>
+              <a href="javascript:;"><span class="icon-angle-down"></span></a>
+            </div>
+          </div>
+          <div class="mail-content">
+            <h3>Email内容</h3>
+            <p>本章列出了所有 JavaScript 内置对象，包括它们的方法和属性。
+              这里的”全局对象（global objects）（或者标准内置对象）“指的是在全局范围（global scope）中的对象（仅当未使用 ECMAScript 5 严格模式时！否则只会得到undefined）。全局对象本身可通过 this 操作符在全局范围中获得。实际上，全局范围就是由全局对象的各个属性组成的（包括继承来的属性）。</p>
+          </div>
+          <div class="mail-reply">
+            <h3>立即回复</h3>
+            <textarea class="mail-text" maxlength="200" name="reply"></textarea>
+            <button class="reply-btn cancel" type="button" value="取消">取消</button>
+            <button class="reply-btn send" type="button" value="发送">发送</button>
+          </div>
+
+        </div>
       </div>
 
     </div>
@@ -64,6 +94,7 @@
 
     <script src="scripts/jquery.min.js"></script>
     <script src="scripts/vue.js"></script>
+    <script src="scripts/vue-touch/vue-touch.js"></script>
     <script src="scripts/main.js"></script>
 
     <!-- endbuild -->

@@ -29,7 +29,13 @@
     <div id="mail-App">
         <header class="head fixed">
           <div class="inform left">
-            <span class="head-icon icon-envelope-alt"></span><div class="circle top-mark">2</div>
+            <span v-if="show" class="head-icon icon-envelope-alt">
+              <div class="circle top-mark">2</div>
+            </span>
+            <a v-else href="javascript:;" v-on:click="onBack">
+              <span class="head-icon icon-chevron-left"></span>
+            </a>
+
           </div>
           <h1 class="head-icon">Han-Mail</h1>
           <div class="inform right spacing">
@@ -38,7 +44,7 @@
         </header>
       <div class="container">
         <section>
-          <div class="container-item" v-for="item in AllItem" v-on:click="readEmail">
+          <div class="container-item" v-for="item in AllItem" v-on:click="onSwipeLeft($event,item,$index)" id="email_item_{{$index}}">
             <div class="userface left">
               <img v-bind:src="item.imgurl" alt="">
             </div>
@@ -50,26 +56,25 @@
             </div>
           </div>
         </section>
-        <div class="mail-item" v-touch:swipeleft="onSwipeLeft">
+        <div class="mail-item hidden">
           <div class="mail-head">
-            <div class="mail-top green">
+            <div class="mail-top {{email.color}}">
             </div>
             <div class="user-pic left">
-              <img class="circle" src="images/userface/2fdfe01fcb5e3ab5b8d3492e0dd223f2.jpg" alt="">
+              <img class="circle" v-bind:src="email.imgurl" alt="">
             </div>
             <div class="mail-center left">
-              <h2>Hansir</h2>
-              <h3> I Miss You</h3>
+              <h2>{{email.username}}</h2>
+              <h3>{{email.title}}</h3>
             </div>
             <div class="mail-right right">
-              <a href="javascript:;"><span class="icon-angle-up"></span></a>
-              <a href="javascript:;"><span class="icon-angle-down"></span></a>
+              <a href="javascript:;" v-on:click=ç"getUp"><span class="icon-angle-up"></span></a>
+              <a href="javascript:;" v-on:click="getDown"><span class="icon-angle-down"></span></a>
             </div>
           </div>
           <div class="mail-content">
             <h3>Email内容</h3>
-            <p>本章列出了所有 JavaScript 内置对象，包括它们的方法和属性。
-              这里的”全局对象（global objects）（或者标准内置对象）“指的是在全局范围（global scope）中的对象（仅当未使用 ECMAScript 5 严格模式时！否则只会得到undefined）。全局对象本身可通过 this 操作符在全局范围中获得。实际上，全局范围就是由全局对象的各个属性组成的（包括继承来的属性）。</p>
+            <p>{{email.content}}</p>
           </div>
           <div class="mail-reply">
             <h3>立即回复</h3>
@@ -94,7 +99,8 @@
 
     <script src="scripts/jquery.min.js"></script>
     <script src="scripts/vue.js"></script>
-    <script src="scripts/vue-touch/vue-touch.js"></script>
+    <script src="scripts/vue-touch/Hammer.js"></script>
+    <script src="scripts/vue-touch/vue-touch.min.js"></script>
     <script src="scripts/main.js"></script>
 
     <!-- endbuild -->

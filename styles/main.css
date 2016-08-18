@@ -53,6 +53,9 @@
 .icon-angle-down:before {
   content: "\f107";
 }
+.icon-chevron-left:before {
+  content: "\f053";
+}
 .right{
   float:right;
 }
@@ -95,7 +98,9 @@
   height: 100%;
   background: #f9f6f6;
   z-index: 100;
-  display:none;
+}
+.hidden{
+  display: none;
 }
 .user{
   position: relative;
@@ -183,6 +188,7 @@
 }
 .mail-content{
   margin: 0 30px;
+  min-height: 300px;
 }
 .mail-content p{
   font-size:28px;

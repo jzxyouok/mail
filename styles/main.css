@@ -11,6 +11,37 @@
 .head h1{
   display: inline-block;
 }
+.dropdown{
+  width: 200px;
+  position: relative;
+  left: -82px;
+  background:#333658;
+  top: 16px;
+  padding-bottom:20px;
+}
+.dropdown li:last-child a{
+  border-bottom:none;
+}
+.dropdown a{
+  display: block;
+  height: 80px;
+  line-height: 80px;
+  font-size: 32px;
+  color: #fff;
+  width: 160px;
+  margin: 0 auto;
+  border-bottom: 1px solid #000;
+}
+.dropdown .top{
+  border-bottom: 20px solid #333658;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  width: 0;
+  height: 0;
+  position: relative;
+  top: -18px;
+  left: 125px;
+}
 .inform{
   width: 120px;
   height: 120px;
@@ -26,7 +57,7 @@
   position: absolute;
   width: 35px;
   height: 35px;
-  background: #ccc;
+  background: #F65151;
   top: 25px;
   left: 60px;
   float: left;
@@ -130,13 +161,13 @@
   height:100%;
 }
 .dot{
-  background-color: greenyellow;
   width: 15px;
   height: 15px;
   display: block;
   position: absolute;
   top: 10px;
   right:0;
+  background-color: greenyellow;
 }
 .mail-head{
   height:150px;
@@ -186,14 +217,41 @@
   font-size:30px;
   margin-bottom:20px;
 }
+.theme{
+  margin:0 0 30px 30px;
+  font-size:30px;
+
+}
 .mail-content{
   margin: 0 30px;
-  min-height: 300px;
+  height: 300px;
+  overflow-y: scroll;
 }
 .mail-content p{
   font-size:28px;
   line-height:35px;
   color: #2f2f2f;
+  padding:5px 20px;
+  margin-bottom: 15px;
+}
+.mail-content .other{
+  background-color: #d9e6f1;
+}
+.mail-content .other span{
+  text-align: right;
+}
+
+.mail-content .self{
+  background-color:#fff;
+  text-align: right;
+}
+.mail-content .self span{
+  text-align: left;
+}
+.mail-content .time{
+  display: block;
+  font-size: 14px !important;
+  color: #9E9E9E;
 }
 .mail-reply{
   margin: 50px 30px;
@@ -215,6 +273,9 @@
   margin-bottom: 20px;
   padding: 20px;
   box-sizing: border-box;
+}
+.read-color{
+  background-color:#ccc !important;
 }
 .green{
   background:#56b699;

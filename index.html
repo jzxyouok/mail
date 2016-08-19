@@ -30,7 +30,7 @@
         <header class="head fixed">
           <div class="inform left">
             <span v-if="show" class="head-icon icon-envelope-alt">
-              <div class="circle top-mark">2</div>
+              <div v-show="unreadNum > 0" class="circle top-mark">{{unreadNum}}</div>
             </span>
             <a v-else href="javascript:;" v-on:click="onBack">
               <span class="head-icon icon-chevron-left"></span>
@@ -40,6 +40,13 @@
           <h1 class="head-icon">Han-Mail</h1>
           <div class="inform right spacing">
             <button class="btn" type="button"><span class="head-icon icon-reorder"></span></button>
+            <ul class="dropdown hidden">
+              <div class="top"></div>
+              <li><a href="javascript:;">发送邮件</a></li>
+              <li><a href="javascript:;">全部已读</a></li>
+              <li><a href="javascript:;">添加好友</a></li>
+            </ul>
+
           </div>
         </header>
       <div class="container">
@@ -50,9 +57,12 @@
             </div>
             <div class="main-item">
               <div class="mask {{item.color}}"></div>
-              <div class="user"><h2>{{item.username}}</h2><span class="dot circle"></span></div>
+              <div class="user"><h2>{{item.username}}</h2>
+                <span v-if="item.readStatus" class="dot circle"></span>
+                <span v-else class="dot read-color circle"></span>
+              </div>
               <div class="caption"><h3>{{item.title}}</h3></div>
-               <div class="content"><p>{{item.content}}</p></div>
+               <div class="content"><p>{{item.content[item.content.length-1].mailcontent}}</p></div>
             </div>
           </div>
         </section>
@@ -68,19 +78,32 @@
               <h3>{{email.title}}</h3>
             </div>
             <div class="mail-right right">
-              <a href="javascript:;" v-on:click=ç"getUp"><span class="icon-angle-up"></span></a>
+              <a href="javascript:;" v-on:click="getUp"><span class="icon-angle-up"></span></a>
               <a href="javascript:;" v-on:click="getDown"><span class="icon-angle-down"></span></a>
             </div>
           </div>
+          <h3 class="theme">
+            #{{email.title}}#
+          </h3>
           <div class="mail-content">
-            <h3>Email内容</h3>
-            <p>{{email.content}}</p>
-          </div>
+            <div v-for="content in email.content">
+            <p v-if="content.reply == 'sb'" class="self">{{content.mailcontent}}<span class="time">{{content.time}}</span></p>
+            <p v-else class="other">{{content.mailcontent}}<span class="time">{{content.time}}</span></p>
+            </div>
+            <!--
+            <p class="other">{{email.content}}<span class="time">昨天下午3点</span></p>
+            <p class="self">好的!<span class="time">昨天下午3点50</span></p>
+              <p class="other">那我们去街角那家咖啡店<span class="time">昨天下午3点</span></p>
+              <p class="self">可以呀,时间是?<span class="time">昨天下午3点50</span></p>
+              <p class="other">下午5点吧<span class="time">昨天下午3点</span></p>
+              -->
+
+            </div>
           <div class="mail-reply">
             <h3>立即回复</h3>
-            <textarea class="mail-text" maxlength="200" name="reply"></textarea>
-            <button class="reply-btn cancel" type="button" value="取消">取消</button>
-            <button class="reply-btn send" type="button" value="发送">发送</button>
+            <textarea class="mail-text" maxlength="200" name="reply" v-model="message"></textarea>
+            <button class="reply-btn cancel" type="button" v-on:click="cancelSend">取消</button>
+            <button class="reply-btn send" type="button" v-on:click="sendMail($event,email)">发送</button>
           </div>
 
         </div>

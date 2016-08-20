@@ -14,10 +14,10 @@
 .dropdown{
   width: 200px;
   position: relative;
-  left: -82px;
-  background:#333658;
+  left: 435px;
+  background: #333658;
   top: 16px;
-  padding-bottom:20px;
+  padding-bottom: 20px;
 }
 .dropdown li:last-child a{
   border-bottom:none;
@@ -87,6 +87,9 @@
 .icon-chevron-left:before {
   content: "\f053";
 }
+.icon-edit:before {
+  content: "\f044";
+}
 .right{
   float:right;
 }
@@ -128,7 +131,7 @@
   width: 100%;
   height: 100%;
   background: #f9f6f6;
-  z-index: 100;
+  z-index: 10;
 }
 .hidden{
   display: none;
@@ -168,6 +171,20 @@
   top: 10px;
   right:0;
   background-color: greenyellow;
+}
+.user-img{
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  right: 25px;
+  top: 30px;
+  padding: 5px;
+  border: 1px solid #fff;
+  background: #000;
+}
+.user-img img{
+  width: 100%;
+  height:100%;
 }
 .mail-head{
   height:150px;
@@ -274,6 +291,130 @@
   padding: 20px;
   box-sizing: border-box;
 }
+.mail-item-head{
+  height: 300px;
+  background: url(../images/bgimg/08p58PIC75V_1024.jpg);
+  padding: 30px;
+  box-sizing: border-box;
+}
+.username{
+  margin:30px;
+  font-size: 38px;
+  color: #fff;
+}
+.my-feed{
+  margin-top: 80px;
+}
+.my-feed li{
+  float: left;
+  width: 160px;
+}
+.my-feed p{
+  position: absolute;
+  top: 68px;
+  left: 80px;
+  color: #fff;
+}
+.mail-icon{
+  display: block;
+  height: 100px;
+  width: 150px;
+  position: relative;
+  border-left: 1px solid #ccc;
+}
+.my-feed li:first-child .mail-icon{
+  border:none;
+}
+.feed{
+  background: url(../images/mailicon/Person.svg) no-repeat 10px 20px;
+}
+.addfeed{
+  background: url(../images/mailicon/Person-add.svg) no-repeat 10px 20px;
+}
+.feed-num{
+  position: absolute;
+  left: 100px;
+  top: 20px;
+  font-size: 38px;
+  color: #fff;
+}
+.feed-item{
+
+}
+.feed-list{
+  height:150px;
+  background:#f9f9f9;
+}
+.feed-list li{
+  position: relative;
+}
+
+.feed-normal{
+  height: 150px;
+}
+.feed-img{
+  height: 120px;
+  width: 120px;
+  margin: 15px 20px;
+}
+.feed-img img{
+  width: 100%;
+  height:100%;
+}
+.feed-name{
+  font-size:32px;
+}
+.feed-title{
+  font-size: 26px;
+  margin-top: 30px;
+}
+.feed-info{
+  width: 480px;
+  float: right;
+  height: 150px;
+  padding: 30px;
+  box-sizing: border-box;
+}
+.feed-pull{
+  position: absolute;
+  z-index: 100;
+  height: 150px;
+  width: 100%;
+  right: -100%;
+  top: 0;
+  -webkit-transition: 1s width;
+  -webkit-transition: 1s right;
+  transition: 1s right;
+  background-color: #34323E;
+}
+.feed-content{
+  float: left;
+  margin: 40px;
+  color:#fff;
+}
+.feed-content h2{
+  font-size:30px;
+  margin-bottom:20px;
+}
+.feed-content p {
+  font-size:24px;
+}
+.pull-width{
+  right: 0px !important;
+}
+.feed-btn{
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  right: 0;
+  background:#F65151;
+  border: none;
+}
+.feed-btn-icon{
+  font-size:50px;
+  color:#fff;
+}
+
 .read-color{
   background-color:#ccc !important;
 }

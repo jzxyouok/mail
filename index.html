@@ -35,23 +35,21 @@
             <a v-else href="javascript:;" v-on:click="onBack">
               <span class="head-icon icon-chevron-left"></span>
             </a>
-
           </div>
           <h1 class="head-icon">Han-Mail</h1>
           <div class="inform right spacing">
-            <button class="btn" type="button"><span class="head-icon icon-reorder"></span></button>
-            <ul class="dropdown hidden">
-              <div class="top"></div>
-              <li><a href="javascript:;">发送邮件</a></li>
-              <li><a href="javascript:;">全部已读</a></li>
-              <li><a href="javascript:;">添加好友</a></li>
-            </ul>
-
+            <button class="btn" type="button" v-on:click="dropdownShow"><span class="head-icon icon-reorder"></span></button>
           </div>
+          <ul v-show="dropdown" class="dropdown">
+            <div class="top"></div>
+            <li><a href="javascript:;">发送邮件</a></li>
+            <li><a href="javascript:;" v-on:click="allRead">{{Read}}</a></li>
+            <li><a href="javascript:;">添加好友</a></li>
+          </ul>
         </header>
       <div class="container">
         <section>
-          <div class="container-item" v-for="item in AllItem" v-on:click="onSwipeLeft($event,item,$index)" id="email_item_{{$index}}">
+          <div class="container-item" v-for="item in AllItem" v-on:click="onSwipeLeft($event,item,$index)" track-by="$index">
             <div class="userface left">
               <img v-bind:src="item.imgurl" alt="">
             </div>
@@ -66,7 +64,7 @@
             </div>
           </div>
         </section>
-        <div class="mail-item hidden">
+        <div class="mail-item hidden" id="mail-main-item">
           <div class="mail-head">
             <div class="mail-top {{email.color}}">
             </div>
@@ -86,17 +84,10 @@
             #{{email.title}}#
           </h3>
           <div class="mail-content">
-            <div v-for="content in email.content">
+            <div v-for="content in email.content" track-by="$index">
             <p v-if="content.reply == 'sb'" class="self">{{content.mailcontent}}<span class="time">{{content.time}}</span></p>
-            <p v-else class="other">{{content.mailcontent}}<span class="time">{{content.time}}</span></p>
+            <p v-if="content.reply == 'null'" class="other">{{content.mailcontent}}<span class="time">{{content.time}}</span></p>
             </div>
-            <!--
-            <p class="other">{{email.content}}<span class="time">昨天下午3点</span></p>
-            <p class="self">好的!<span class="time">昨天下午3点50</span></p>
-              <p class="other">那我们去街角那家咖啡店<span class="time">昨天下午3点</span></p>
-              <p class="self">可以呀,时间是?<span class="time">昨天下午3点50</span></p>
-              <p class="other">下午5点吧<span class="time">昨天下午3点</span></p>
-              -->
 
             </div>
           <div class="mail-reply">
@@ -105,6 +96,54 @@
             <button class="reply-btn cancel" type="button" v-on:click="cancelSend">取消</button>
             <button class="reply-btn send" type="button" v-on:click="sendMail($event,email)">发送</button>
           </div>
+
+        </div>
+        <div class="mail-item" id="mail-send">
+            <div class="mail-item-head">
+              <div class="username">蒋菡</div>
+              <div class="user-img">
+                <img src="images/userface/59a0a94d3612ddb469bb43fbd0d884e2.jpg" alt="">
+              </div>
+                <ul class="my-feed">
+                  <li>
+                    <a class="mail-icon feed" href="javascript:;">
+                      <span class="feed-num">7</span>
+                      <p>闺中密友</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="mail-icon addfeed" href="javascript:;">
+                      <span class="feed-num">8</span>
+                      <p>可能认识</p>
+                    </a>
+                  </li>
+                </ul>
+            </div>
+            <div class="feed-item">
+              <ul class="feed-list">
+                <li v-on:click="feedNormalClick($event,item)" v-for="item in userInfo">
+                  <div class="feed-normal">
+                    <div class="feed-img left">
+                      <img class="circle" v-bind:src="item.imgurl" alt="">
+                    </div>
+                    <div class="feed-info">
+                      <div class="feed-name">{{item.username}}</div>
+                      <div class="feed-title">{{item.introduction}}</div>
+                    </div>
+                  </div>
+                  <div class="feed-pull" v-bind:class="{'pull-width':item.isPull}">
+                    <div class="feed-content">
+                      <h2>我很想你</h2>
+                      <p>嘻嘻,一起出来玩吧</p>
+                    </div>
+                    <button class="feed-btn" type="button" v-on:click.stop="feedEdit">
+                      <span class="feed-btn-icon icon-edit"></span>
+                    </button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
 
         </div>
       </div>

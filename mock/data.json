@@ -37,42 +37,48 @@
       "imgurl":"images/userface/59a0a94d3612ddb469bb43fbd0d884e2.jpg",
       "title":"Hello",
       "content":"I Miss You!",
-      "color":"blue"
+      "color":"blue",
+      "reply":"null"
     },
     {
       "username":"Micheal",
       "imgurl":"images/userface/55e1e026dc781749.jpg!200x200.jpg",
       "title":"Hello",
       "content":"I Miss You!",
-      "color":"yellow"
+      "color":"yellow",
+      "reply":"null"
     },
     {
       "username":"Amy",
       "imgurl":"images/userface/on15puvdrrvjpg.jpg",
       "title":"Hello",
       "content":"I Miss You!",
-      "color":"red"
+      "color":"red",
+      "reply":"null"
     },
     {
       "username":"David",
       "imgurl":"images/userface/1301191658480017.jpg",
       "title":"Hello",
       "content":"I Miss You!",
-      "color":"orange"
+      "color":"orange",
+      "reply":"null"
     },
     {
       "username":"James",
       "imgurl":"images/userface/u=2090772463,1650930228&fm=73.jpeg",
       "title":"Hello",
       "content":"I Miss You!",
-      "color":"pink"
+      "color":"pink",
+      "reply":"null"
     },
     {
       "username":"James",
       "imgurl":"images/userface/u=2090772463,1650930228&fm=73.jpeg",
       "title":"Hello",
       "content":"I Miss You!",
-      "color":"yellow"
+      "color":"yellow",
+      "reply":"null"
     }
   ]
 }

@@ -42,7 +42,7 @@
           </div>
           <ul v-show="dropdown" class="dropdown">
             <div class="top"></div>
-            <li><a href="javascript:;">发送邮件</a></li>
+            <li><a href="javascript:;" v-on:click="sendMailShow">发送邮件</a></li>
             <li><a href="javascript:;" v-on:click="allRead">{{Read}}</a></li>
             <li><a href="javascript:;">添加好友</a></li>
           </ul>
@@ -64,7 +64,7 @@
             </div>
           </div>
         </section>
-        <div class="mail-item hidden" id="mail-main-item">
+        <div class="mail-item" id="mail-main-item" v-bind:Class="{'hidden':mailItemShow}">
           <div class="mail-head">
             <div class="mail-top {{email.color}}">
             </div>
@@ -98,7 +98,7 @@
           </div>
 
         </div>
-        <div class="mail-item" id="mail-send">
+        <div class="mail-item" id="mail-send" v-bind:class="{'hidden':mailSendShow}">
             <div class="mail-item-head">
               <div class="username">蒋菡</div>
               <div class="user-img">
@@ -106,20 +106,20 @@
               </div>
                 <ul class="my-feed">
                   <li>
-                    <a class="mail-icon feed" href="javascript:;">
-                      <span class="feed-num">7</span>
+                    <a class="mail-icon feed" href="javascript:;" v-on:click="renderFriend">
+                      <span class="feed-num">{{friendNum}}</span>
                       <p>闺中密友</p>
                     </a>
                   </li>
                   <li>
-                    <a class="mail-icon addfeed" href="javascript:;">
+                    <a class="mail-icon addfeed" href="javascript:;" v-on:click="addFriend">
                       <span class="feed-num">8</span>
                       <p>可能认识</p>
                     </a>
                   </li>
                 </ul>
             </div>
-            <div class="feed-item">
+            <div class="feed-item" v-bind:class="{'hidden':feedItemShow}">
               <ul class="feed-list">
                 <li v-on:click="feedNormalClick($event,item)" v-for="item in userInfo">
                   <div class="feed-normal">
@@ -133,17 +133,19 @@
                   </div>
                   <div class="feed-pull" v-bind:class="{'pull-width':item.isPull}">
                     <div class="feed-content">
-                      <h2>我很想你</h2>
-                      <p>嘻嘻,一起出来玩吧</p>
+                      <h2>#{{oncemail.title}}#</h2>
+                      <p>{{SendMailPep}} : {{oncemail.content[oncemail.content.length-1].mailcontent}}</p>
                     </div>
-                    <button class="feed-btn" type="button" v-on:click.stop="feedEdit">
+                    <button class="feed-btn" type="button" v-on:click.stop="feedEdit(item)">
                       <span class="feed-btn-icon icon-edit"></span>
                     </button>
                   </div>
                 </li>
               </ul>
             </div>
+            <div class="feed-item" id="feed-addFriend" v-bind:class="{'hidden':addFriendShow}">
 
+            </div>
 
         </div>
       </div>

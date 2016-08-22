@@ -14,12 +14,20 @@ $(function(){
         AllItem:allItem,
         userInfo:userinfo,
         email:{},
+        oncemail:{},
         show:true,
+        SendMailPep:'',
         index:0,
         unreadNum:0,
         message:'',
         dropdown:false,
         Read:'全部已读',
+        feedItemShow:false,
+        mailSendShow:true,
+        feedEditshow:false,
+        mailItemShow:true,
+        addFriendShow:true,
+        friendNum:0
       },
       ready: function () {
           this.AllItem.forEach(function(element){
@@ -31,7 +39,8 @@ $(function(){
           }.bind(this));
         this.userInfo.forEach(function(element){
           Vue.set(element,'isPull',false);
-        });
+          this.friendNum ++
+        }.bind(this));
         },
       methods:{
         mailOnClick:function(){
@@ -43,7 +52,7 @@ $(function(){
           this.email = item;
           this.index = index;
           this.show = false;
-          $("#mail-main-item").removeClass("hidden");
+          this.mailItemShow = false;
 
         },
         sendMail:function(){
@@ -65,13 +74,16 @@ $(function(){
         onBack:function(){
           var i = 0;
           this.show = true;
-          $("#mail-main-item").addClass("hidden");
+          this.mailItemShow = true
           this.AllItem.forEach(function(element){
             if(element.status == 'Unread'){
               i++;
             }
             this.unreadNum = i ;
           }.bind(this));
+        },
+        onHome:function(){
+
         },
         getUp:function(){
           var id = this.index-1;
@@ -114,13 +126,41 @@ $(function(){
         },
         feedNormalClick:function(event,item){
           var _status = item.isPull;
-          this.userInfo.forEach(function(element){
+          this.userInfo.forEach(function(element) {
             element.isPull = false;
+            item.isPull = !_status;
           })
-          item.isPull = !_status;
+          this.AllItem.forEach(function (element) {
+            if(element.username == item.username){
+               this.oncemail = element;
+              if(element.content[element.content.length-1].reply =='sb'){
+                this.SendMailPep = 'You';
+              } else{
+                this.SendMailPep = element.username;
+              }
+            };
+          }.bind(this));
+      },
+
+        feedEdit:function(item){
+          this.mailItemShow = false;
+          this.mailSendShow = true;
+          this.AllItem.forEach(function(element){
+            if(element.username == item.username){
+              this.email = element;
+            }
+          }.bind(this));
+
+
         },
-        feedEdit:function(){
-          
+        sendMailShow:function () {
+          this.mailSendShow = false;
+        },
+        renderFriend:function(){
+          this.feedItemShow = false;
+        },
+        addFriend:function(){
+          this.addFriendShow = false;
         }
       }
     })

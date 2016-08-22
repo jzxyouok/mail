@@ -143,7 +143,34 @@
                 </li>
               </ul>
             </div>
-            <div class="feed-item" id="feed-addFriend" v-bind:class="{'hidden':addFriendShow}">
+            <div class="feed-item" id="feed-addFriend" v-bind:class="{'hidden':addFriendShow}" >
+               <div class="feed-add-head">
+                 <div class="search">
+                   <span></span>
+                   <input type="text" placeholder="请输入要搜索的用户名">
+                 </div>
+                 <img class="search-img" src="images/appicon/conference_call.svg" alt="">
+                 <h1>添加好友</h1>
+               </div>
+              <div class="friendlist">
+                <ul>
+                  <li>
+                    <div class="feed-normal feed-add-color" >
+                      <div class="feed-img left">
+                        <img src="" alt="">
+                      </div>
+                      <div class="feed-info">
+                        <div class="feed-name"><h2>Jake</h2></div>
+                        <div class="feed-title"><p>就读同一所大学:Jake</p></div>
+                      </div>
+                      <button class="feed-btn" v-bind:class="{'feed-btn-pull':feedBtnPull}" type="button">
+                        <span class="feed-btn-icon font-1">添加</span>
+                      </button>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <button>换一批</button>
 
             </div>
 

@@ -90,6 +90,9 @@
 .icon-edit:before {
   content: "\f044";
 }
+.icon-search:before {
+  content: "\f002";
+}
 .right{
   float:right;
 }
@@ -414,7 +417,45 @@
   font-size:50px;
   color:#fff;
 }
+.feed-add-head{
+  height: 220px;
+  text-align: center;
+  padding: 20px 0;
+  background:#f7faf3;
+  border-bottom:1px solid #000;
+}
+.font-1{
+  font-size: 30px !important;
+}
+.feed-add-color{
+  background: #f7faf3;
+}
+.search{
+  margin: 0 auto;
+  position: relative;
+  width: 380px;
+}
+.search input {
+  height: 70px;
+  width: 350px;
+  font-size: 26px;
+  padding-left: 55px;
+  box-sizing: border-box;
+}
+.search span{
+  width: 70px;
+  height: 70px;
+  display: block;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background: url(../images/appicon/animat-search-color.gif) 10px;
+  background-size: 80px;
+}
+.search-img{
+  width:100px;
 
+}
 .read-color{
   background-color:#ccc !important;
 }

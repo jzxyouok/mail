@@ -27,6 +27,7 @@ $(function(){
         feedEditshow:false,
         mailItemShow:true,
         addFriendShow:true,
+        feedBtnPull:false,
         friendNum:0
       },
       ready: function () {
@@ -150,16 +151,17 @@ $(function(){
               this.email = element;
             }
           }.bind(this));
-
-
+          
         },
         sendMailShow:function () {
           this.mailSendShow = false;
         },
         renderFriend:function(){
           this.feedItemShow = false;
+          this.addFriendShow = true;
         },
         addFriend:function(){
+          this.feedItemShow = true;
           this.addFriendShow = false;
         }
       }

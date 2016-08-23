@@ -3,47 +3,65 @@
     {
       "username":"阳光照亮我心",
       "relation":"来自同一所小学",
-      "realname":"周西"
+      "realname":"周西",
+      "url":"images/userface/1.jpg",
+      "introduction":"a good man"
     },
     {
       "username":"漫步云端",
       "relation":"来自同一所高中",
-      "realname":"陈晨"
+      "realname":"陈晨",
+      "url":"images/userface/2.jpg",
+      "introduction":"a good man"
     },
     {
       "username":"BiBi",
       "relation":"来自你关注的网络红人",
-      "realname":"宋进义"
+      "realname":"宋进义",
+      "url":"images/userface/3.jpg",
+      "introduction":"a good man"
     },
     {
       "username":"Rainy",
       "relation":"来自高中同学",
-      "realname":"周楽"
+      "realname":"周楽",
+      "url":"images/userface/8.jpg",
+      "introduction":"a good man"
     },
     {
       "username":"OOO",
       "relation":"来自同一所大学",
-      "realname":"秋霜"
+      "realname":"秋霜",
+      "url":"images/userface/4.jpg",
+      "introduction":"a good man"
     },
     {
       "username":"西瓜",
       "relation":"来自同一大学",
-      "realname":"胡亦菲"
+      "realname":"胡亦菲",
+      "url":"images/userface/5.jpg",
+      "introduction":"a good man"
     },
     {
       "username":"佛山无影脚",
       "relation":"来自你关注的网络红人",
-      "realname":"黄飞鸿"
+      "realname":"黄飞鸿",
+      "url":"images/userface/6.jpg",
+      "introduction":"a good man"
     },
     {
       "username":"如果能重来",
       "relation":"来自你关注的网络红人",
-      "realname":"李白"
+      "realname":"李白",
+      "url":"images/userface/libai.jpg",
+      "introduction":"a good man"
     },
     {
       "username":"带铃铛的小公举",
       "relation":"来自你的高中同学",
-      "realname":"岩玲"
+      "realname":"岩玲",
+      "url":"images/userface/7.jpg",
+      "introduction":"a good man"
     }
   ]
 }

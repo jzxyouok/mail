@@ -44,7 +44,7 @@
             <div class="top"></div>
             <li><a href="javascript:;" v-on:click="sendMailShow">发送邮件</a></li>
             <li><a href="javascript:;" v-on:click="allRead">{{Read}}</a></li>
-            <li><a href="javascript:;">添加好友</a></li>
+            <li><a href="javascript:;" v-on:click="addFriend">添加好友</a></li>
           </ul>
         </header>
       <div class="container">
@@ -98,7 +98,7 @@
           </div>
 
         </div>
-        <div class="mail-item" id="mail-send" v-bind:class="{'hidden':mailSendShow}">
+        <div class="mail-item" id="mail-send" v-bind:class="{'hidden':mailItemHide}">
             <div class="mail-item-head">
               <div class="username">蒋菡</div>
               <div class="user-img">
@@ -143,28 +143,44 @@
                 </li>
               </ul>
             </div>
-            <div class="feed-item" id="feed-addFriend" v-bind:class="{'hidden':addFriendShow}" >
+            <div class="feed-item" id="feed-addFriend" v-bind:class="{'hidden':!feedItemShow}" >
                <div class="feed-add-head">
                  <div class="search">
                    <span></span>
-                   <input type="text" placeholder="请输入要搜索的用户名">
+                   <input type="text" placeholder="请输入要搜索的用户名" v-model="searchText" v-on:keyup="SearchInput">
                  </div>
                  <img class="search-img" src="images/appicon/conference_call.svg" alt="">
                  <h1>添加好友</h1>
                </div>
-              <div class="friendlist">
-                <ul>
-                  <li>
-                    <div class="feed-normal feed-add-color" >
+              <div class="friendlist" id="friend-list">
+                <ul v-if="friendlistshow">
+                  <li v-for="item in AllFirends">
+                    <div class="feed-normal feed-add-color" v-on:click="feedBtnShow(item)">
                       <div class="feed-img left">
-                        <img src="" alt="">
+                        <img v-bind:src="item.url" alt="">
                       </div>
                       <div class="feed-info">
-                        <div class="feed-name"><h2>Jake</h2></div>
-                        <div class="feed-title"><p>就读同一所大学:Jake</p></div>
+                        <div class="feed-name"><h2>{{item.username}}</h2></div>
+                        <div class="feed-title"><p>{{item.relation}}:{{item.realname}}</p></div>
                       </div>
-                      <button class="feed-btn" v-bind:class="{'feed-btn-pull':feedBtnPull}" type="button">
-                        <span class="feed-btn-icon font-1">添加</span>
+                      <button class="feed-btn-add" v-bind:class="{'feed-btn-pull':item.feedBtnPull}" type="button">
+                        <span class="feed-btn-icon font-1" v-on:click="feedBtnClick(item)">添加</span>
+                      </button>
+                    </div>
+                  </li>
+                </ul>
+                <ul v-else>
+                  <li v-for="item in searchFriends">
+                    <div class="feed-normal feed-add-color" v-on:click="feedBtnShow(item)">
+                      <div class="feed-img left">
+                        <img v-bind:src="item.url" alt="">
+                      </div>
+                      <div class="feed-info">
+                        <div class="feed-name"><h2>{{{item.username}}}</h2></div>
+                        <div class="feed-title"><p>{{item.relation}}:{{item.realname}}</p></div>
+                      </div>
+                      <button class="feed-btn-add" v-bind:class="{'feed-btn-pull':item.feedBtnPull}" type="button">
+                        <span class="feed-btn-icon font-1" v-on:click="feedBtnClick(item)">添加</span>
                       </button>
                     </div>
                   </li>

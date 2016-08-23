@@ -413,6 +413,18 @@
   background:#F65151;
   border: none;
 }
+.feed-btn-add{
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  right: -150px;
+  background:#F65151;
+  border: none;
+  transition:.5s right;
+}
+.feed-btn-pull{
+  right:0px !important;
+}
 .feed-btn-icon{
   font-size:50px;
   color:#fff;

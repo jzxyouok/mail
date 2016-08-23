@@ -1,18 +1,23 @@
 $(function(){
   $.getJSON("mock/data.json",function(response){
-    var allItem = response.data
+    var allItem = response.data;
     $.getJSON("mock/userInfo.json",function (response) {
       var userinfo = response.data;
-      RenderDom(allItem,userinfo);
+      $.getJSON("mock/friends.json",function(response){
+        var friends = (response.data);
+        RenderDom(allItem,userinfo,friends);
+      })
     })
-  })
+  });
   Vue.use(VueTouch);
-  function RenderDom(allItem,userinfo){
+  function RenderDom(allItem,userinfo,friends){
     var app = new Vue({
       el:'#mail-App',
       data:{
         AllItem:allItem,
         userInfo:userinfo,
+        AllFirends:friends,
+        searchFriends:[],
         email:{},
         oncemail:{},
         show:true,
@@ -22,12 +27,11 @@ $(function(){
         message:'',
         dropdown:false,
         Read:'全部已读',
+        searchText:'',
         feedItemShow:false,
-        mailSendShow:true,
-        feedEditshow:false,
         mailItemShow:true,
-        addFriendShow:true,
-        feedBtnPull:false,
+        mailItemHide:true,
+        friendlistshow:true,
         friendNum:0
       },
       ready: function () {
@@ -40,13 +44,10 @@ $(function(){
           }.bind(this));
         this.userInfo.forEach(function(element){
           Vue.set(element,'isPull',false);
-          this.friendNum ++
+          this.friendNum = this.userInfo.length;
         }.bind(this));
         },
       methods:{
-        mailOnClick:function(){
-
-        },
         onSwipeLeft:function(event,item,index){
           item.status = 'read';
           item.readStatus = false;
@@ -75,7 +76,8 @@ $(function(){
         onBack:function(){
           var i = 0;
           this.show = true;
-          this.mailItemShow = true
+          this.feedItemShow = true;
+          this.mailItemHide = true;
           this.AllItem.forEach(function(element){
             if(element.status == 'Unread'){
               i++;
@@ -113,6 +115,7 @@ $(function(){
           this.dropdown = !(this.dropdown);
         },
         allRead:function(){
+          this.dropdown = false;
          if(this.Read == "全部已读"){
            this.AllItem.forEach(function(element){
              element.readStatus = false;
@@ -145,7 +148,6 @@ $(function(){
 
         feedEdit:function(item){
           this.mailItemShow = false;
-          this.mailSendShow = true;
           this.AllItem.forEach(function(element){
             if(element.username == item.username){
               this.email = element;
@@ -154,17 +156,71 @@ $(function(){
           
         },
         sendMailShow:function () {
-          this.mailSendShow = false;
+          this.show = false;
+          this.feedItemShow = false;
+          this.mailItemHide = false;
+          this.dropdown = false;
         },
         renderFriend:function(){
           this.feedItemShow = false;
-          this.addFriendShow = true;
         },
-        addFriend:function(){
+        addFriend:function(item){
+          this.mailItemShow = true;
+          this.mailItemHide = false;
           this.feedItemShow = true;
-          this.addFriendShow = false;
+          this.dropdown = false;
+          this.show = false;
+        },
+        feedBtnShow:function(item){
+          var _status = item.feedBtnPull || false;
+          this.AllFirends.forEach(function(element){
+            Vue.set(element,'feedBtnPull',false);
+            // element.feedBtnPull = false;
+          })
+          item.feedBtnPull = !_status;
+        },
+        feedBtnClick:function(item){
+          var _User =item.username;
+          _User = _User.replace(/<\/?span[^>]*>/ig,"");
+          var _Url = item.url;
+          var _Introduction =item.introduction;
+          this.userInfo.push({
+            "username":_User,
+            "imgurl":_Url,
+            "introduction":_Introduction
+          });
+          alert("添加成功");
+          this.AllFirends.forEach(function(element,index){
+            if(element.url == _Url){
+              this.AllFirends.splice(index,1);
+            }
+          }.bind(this));
+          this.userInfo.forEach(function(){
+            this.friendNum = this.userInfo.length;
+          }.bind(this));
+        },
+        SearchInput:function() {
+          this.searchFriends = [];
+          this.friendlistshow = false;
+          var _Text = this.searchText;
+          if(_Text == ''){
+            this.friendlistshow = true;
+          }
+          else {
+            this.searchFriends.forEach(function (feed) {
+              if (feed.username.indexOf(_Text) !== -1) {
+                this.searchFriends.push(feed);
+                this.searchFriends.forEach(function(element){
+                  var _User = element.username;
+                  var _Reg = new RegExp(_Text, 'g');
+                  element.username = _User.replace(_Reg, '<span class="blue">' + _Text + '</span>')
+                })
+              }
+            }.bind(this));
+          }
         }
       }
+
     })
   }
 })

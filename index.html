@@ -4,7 +4,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
-    <meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+    <meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <title>mail msg</title>
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -38,7 +39,7 @@
           </div>
           <h1 class="head-icon">Han-Mail</h1>
           <div class="inform right spacing">
-            <button class="btn" type="button" v-on:click="dropdownShow"><span class="head-icon icon-reorder"></span></button>
+            <a class="btn" type="button" v-on:click="dropdownShow"><span class="head-icon icon-reorder"></span></a>
           </div>
           <ul v-show="dropdown" class="dropdown">
             <div class="top"></div>

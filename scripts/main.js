@@ -32,7 +32,8 @@ $(function(){
         mailItemShow:true,
         mailItemHide:true,
         friendlistshow:true,
-        friendNum:0
+        friendNum:0,
+        searchFridNum:0
       },
       ready: function () {
           this.AllItem.forEach(function(element){
@@ -46,6 +47,7 @@ $(function(){
           Vue.set(element,'isPull',false);
           this.friendNum = this.userInfo.length;
         }.bind(this));
+        this.searchFridNum = this.AllFirends.length;
         },
       methods:{
         onSwipeLeft:function(event,item,index){
@@ -74,19 +76,21 @@ $(function(){
           this.onBack();
         },
         onBack:function(){
-          var i = 0;
           this.show = true;
           this.feedItemShow = true;
+          this.mailItemShow = true;
           this.mailItemHide = true;
+          this.onMailNum()
+
+        },
+        onMailNum:function(){
+          var i= 0;
           this.AllItem.forEach(function(element){
             if(element.status == 'Unread'){
               i++;
             }
-            this.unreadNum = i ;
+            this.unreadNum = i;
           }.bind(this));
-        },
-        onHome:function(){
-
         },
         getUp:function(){
           var id = this.index-1;
@@ -119,14 +123,17 @@ $(function(){
          if(this.Read == "全部已读"){
            this.AllItem.forEach(function(element){
              element.readStatus = false;
+             element.status = 'read';
            }.bind(this));
            this.Read = '全部未读';
          } else{
            this.AllItem.forEach(function(element){
              element.readStatus = true;
+             element.status = 'Unread';
            }.bind(this));
            this.Read ='全部已读';
          }
+          this.onMailNum();
         },
         feedNormalClick:function(event,item){
           var _status = item.isPull;
@@ -147,6 +154,7 @@ $(function(){
       },
 
         feedEdit:function(item){
+          this.mailItemHide = true;
           this.mailItemShow = false;
           this.AllItem.forEach(function(element){
             if(element.username == item.username){
@@ -198,6 +206,7 @@ $(function(){
           this.userInfo.forEach(function(){
             this.friendNum = this.userInfo.length;
           }.bind(this));
+          this.searchFridNum = this.AllFirends.length;
         },
         SearchInput:function() {
           this.searchFriends = [];
@@ -207,9 +216,9 @@ $(function(){
             this.friendlistshow = true;
           }
           else {
-            this.searchFriends.forEach(function (feed) {
-              if (feed.username.indexOf(_Text) !== -1) {
-                this.searchFriends.push(feed);
+            this.AllFirends.forEach(function (element) {
+              if (element.username.indexOf(_Text) !== -1) {
+                this.searchFriends.push(element);
                 this.searchFriends.forEach(function(element){
                   var _User = element.username;
                   var _Reg = new RegExp(_Text, 'g');

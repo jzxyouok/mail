@@ -48,7 +48,7 @@
           </ul>
         </header>
       <div class="container">
-        <section>
+        <section v-bind:class="{'container-move':!mailItemShow || !mailItemHide}">
           <div class="container-item" v-for="item in AllItem" v-on:click="onSwipeLeft($event,item,$index)" track-by="$index">
             <div class="userface left">
               <img v-bind:src="item.imgurl" alt="">
@@ -98,7 +98,7 @@
           </div>
 
         </div>
-        <div class="mail-item" id="mail-send" v-bind:class="{'hidden':mailItemHide}">
+        <div class="mail-item" id="mail-send" v-bind:class="{'left-hidden':mailItemHide}">
             <div class="mail-item-head">
               <div class="username">蒋菡</div>
               <div class="user-img">
@@ -113,13 +113,13 @@
                   </li>
                   <li>
                     <a class="mail-icon addfeed" href="javascript:;" v-on:click="addFriend">
-                      <span class="feed-num">8</span>
+                      <span class="feed-num">{{searchFridNum}}</span>
                       <p>可能认识</p>
                     </a>
                   </li>
                 </ul>
             </div>
-            <div class="feed-item" v-bind:class="{'hidden':feedItemShow}">
+            <div class="feed-item" v-bind:class="{'left-hidden':feedItemShow}">
               <ul class="feed-list">
                 <li v-on:click="feedNormalClick($event,item)" v-for="item in userInfo">
                   <div class="feed-normal">
@@ -206,8 +206,8 @@
 
     <script src="scripts/jquery.min.js"></script>
     <script src="scripts/vue.js"></script>
-    <!--<script src="scripts/vue-touch/Hammer.js"></script>
-    <script src="scripts/vue-touch/vue-touch.min.js"></script>-->
+    <script src="scripts/vue-touch/Hammer.js"></script>
+    <script src="scripts/vue-touch/vue-touch.min.js"></script>
     <script src="scripts/main.js"></script>
 
     <!-- endbuild -->

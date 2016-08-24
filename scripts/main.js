@@ -22,6 +22,7 @@ $(function(){
         oncemail:{},
         show:true,
         SendMailPep:'',
+        LastCont:{},
         index:0,
         unreadNum:0,
         message:'',
@@ -144,6 +145,7 @@ $(function(){
           this.AllItem.forEach(function (element) {
             if(element.username == item.username){
                this.oncemail = element;
+              this.LastCont = oncemail.content[oncemail.content.length-1];
               if(element.content[element.content.length-1].reply =='sb'){
                 this.SendMailPep = 'You';
               } else{

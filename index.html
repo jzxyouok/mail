@@ -134,7 +134,7 @@
                   <div class="feed-pull" v-bind:class="{'pull-width':item.isPull}">
                     <div class="feed-content">
                       <h2>#{{oncemail.title}}#</h2>
-                      <p>{{SendMailPep}} : {{oncemail.content[oncemail.content.length-1].mailcontent}}</p>
+                      <p>{{SendMailPep}} : {{LastCont.mailcontent}}</p>
                     </div>
                     <button class="feed-btn" type="button" v-on:click.stop="feedEdit(item)">
                       <span class="feed-btn-icon icon-edit"></span>

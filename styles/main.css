@@ -384,6 +384,7 @@ section{
 
 .feed-normal{
   height: 150px;
+  position:relative;
 }
 .feed-img{
   height: 120px;
@@ -449,6 +450,7 @@ section{
   width: 150px;
   height: 150px;
   position: absolute;
+  top:0;
   right: -150px;
   background:#F65151;
   border: none;

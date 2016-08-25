@@ -164,8 +164,8 @@
                         <div class="feed-name"><h2>{{item.username}}</h2></div>
                         <div class="feed-title"><p>{{item.relation}}:{{item.realname}}</p></div>
                       </div>
-                      <button class="feed-btn-add" v-bind:class="{'feed-btn-pull':item.feedBtnPull}" type="button">
-                        <span class="feed-btn-icon font-1" v-on:click="feedBtnClick(item)">添加</span>
+                      <button class="feed-btn-add" v-bind:class="{'feed-btn-pull':item.feedBtnPull}" type="button" v-on:click="feedBtnClick($event,item)">
+                        <span class="feed-btn-icon font-1">添加</span>
                       </button>
                     </div>
                   </li>

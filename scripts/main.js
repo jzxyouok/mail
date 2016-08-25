@@ -145,7 +145,7 @@ $(function(){
           this.AllItem.forEach(function (element) {
             if(element.username == item.username){
                this.oncemail = element;
-              this.LastCont = oncemail.content[oncemail.content.length-1];
+              this.LastCont = this.oncemail.content[this.oncemail.content.length-1];
               if(element.content[element.content.length-1].reply =='sb'){
                 this.SendMailPep = 'You';
               } else{
@@ -189,7 +189,7 @@ $(function(){
           })
           item.feedBtnPull = !_status;
         },
-        feedBtnClick:function(item){
+        feedBtnClick:function(event,item){
           var _User =item.username;
           _User = _User.replace(/<\/?span[^>]*>/ig,"");
           var _Url = item.url;
@@ -197,7 +197,14 @@ $(function(){
           this.userInfo.push({
             "username":_User,
             "imgurl":_Url,
-            "introduction":_Introduction
+            "introduction":_Introduction,
+            "content":[
+              {
+                "time":this.getTime(),
+                "mailcontent":"hello,nice to meet you",
+                "reply":"null",
+              }],
+            "isPull": false
           });
           alert("添加成功");
           this.AllFirends.forEach(function(element,index){
@@ -209,6 +216,7 @@ $(function(){
             this.friendNum = this.userInfo.length;
           }.bind(this));
           this.searchFridNum = this.AllFirends.length;
+
         },
         SearchInput:function() {
           this.searchFriends = [];
